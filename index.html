@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Instagram</title>
+    <style>
+        
+        .insta{
+            height: 600px;
+            width: 380px;
+            border-radius: 3px;
+            border: 1px solid black;
+            
+        }
+        .img{
+            margin-left: 5px;
+            margin-top: 3%;
+        }
+        .part1{
+            display: flex;
+            margin-right: 100px;
+            
+            
+        }
+        .icons{
+            display: flex;
+            margin-left: 55%;
+            margin-top: 3%;
+            align-self: center;
+            cursor: pointer;
+            
+        }
+        .icons .far{
+            margin-left: 20px;
+            color: black;
+            text-decoration: none;
+        }
+        
+        
+        .part2 img{
+            margin-right:3%;
+            margin-left: 3%;
+        }
+        .part2 p{
+            position: absolute;
+            font-size: 13px;
+            padding-bottom: 2px;
+        }
+        .part2 #p1{
+            left: 5px;
+        }
+        .part2 #p2{
+            left: 100px;
+        }
+        .part2 #p3{
+            left: 180px;
+        }
+        .part2 #p4{
+            left:270px;
+        }
+        .para1 a{
+           color: black;
+           font-weight: bold;
+           margin-left: 10px;
+           font-size: 13px;
+        }
+        .para1 img{
+            margin-left: 1px;
+        }
+        .post1 .far, .fas{
+            padding-left: 10px;
+            padding-top: 5px;
+        }
+
+
+       
+
+        #myImg {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #myImg:hover {
+            opacity: 0.7;}
+
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+
+
+
+        .modal2 {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+
+
+
+
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content, #caption {  
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {-webkit-transform:scale(0)} 
+            to {-webkit-transform:scale(1)}
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
+/* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        @media only screen and (max-width: 700px){
+            .modal-content {
+            width: 100%;
+            }
+        }
+        .post2 img{
+            height: 280px;
+            width: 357.5px;
+            margin-top: 7px;
+            margin-left: 0;
+        }
+        .post1 .far,.fas{
+            cursor: pointer;
+        }
+
+        .footer .far,.fas{
+            padding-right: 8%;
+            cursor: pointer;
+            padding-left: 3.5%;
+            
+        }
+    
+
+
+
+        button.toggle {
+            border: none;
+            background: #fff;
+            padding: 0;
+            margin-left: 45%;
+   
+        }
+
+        #link-box {
+           width: 250px;
+           height: 300px;
+           display: none;
+           border: 1px solid #000000;
+           position: absolute;
+           left: 20%;
+           background-color: white;
+           border-radius: 3px;
+        }
+
+        .toggle:focus~#link-box {
+           display: block;
+        }
+
+        #link-box > ul > li {
+            list-style: none;
+            padding: 10px;
+        }
+
+        #link-box > ul > li > a {
+            text-decoration: none;
+            color: #000000;
+            text-align: center;
+        }
+        #heart {
+            color: black;
+            cursor: pointer;
+        }
+
+        .fa-heart {
+            color: #f84857;
+            cursor: pointer;
+            font-size: 25px;
+        }
+        .far{
+            color: black;
+        }
+        .fa{
+            margin-left: 10px;
+        }
+        .footer a:hover{
+            transform: translateY(-7px);
+            transition: 1s;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+    <!--logo-->
+    <div class="insta">
+    <div class="part1">
+        <div class="img"><img src="Instagram-Logo.png" height="30px"></div>
+        <div class="icons"><a href="" class="far fa-plus-square" style="font-size:25px;" ></i>
+        <a href=""  class="far fa-heart" style="font-size:25px;"></a>
+        <a href="" class="fas fa-paper-plane" style="font-size:23px;text-decoration: none; color: black;padding-left: 12px;"></a></div>
+
+    </div>
+    <hr>
+
+    <!--stories-->
+    <div class="part2">
+        <img src="swati.jpg" id="myImg" class="rounded-circle" width="60px" height="60px">
+        <img src="flower.jpg" id="myImg2" class="rounded-circle" width="60px" height="60px">
+        <img src="butterfly.jpg" id="myImg3" class="rounded-circle" width="60px" height="60px">
+        <img src="dog.jfif" id="myImg4" class="rounded-circle" width="60px" height="60px">
+        <p id="p1">Your Story</p>
+        <p id="p2">mevikas...</p>
+        <p id="p3">me_piyush...</p>
+        <p id="p4">chahar_am...</p>
+
+    </div>
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+      </div>
+      <div id="myModal2" class="modal2">
+        <span class="close">&times;</span>
+        <img class="modal-content2" id="img02">
+        <div id="caption2"></div>
+      </div>
+      <div id="myModal3" class="modal3">
+        <span class="close">&times;</span>
+        <img class="modal-content3" id="img03">
+        <div id="caption3"></div>
+      </div>
+      <div id="myModal4" class="modal4">
+        <span class="close">&times;</span>
+        <img class="modal-content4" id="img04">
+        <div id="caption4"></div>
+      </div>
+      
+      
+    <hr>
+
+    <!--posts-->
+    <div class="post1">
+        <div style="overflow-y: scroll; height:350px;">
+        <div class="para1">
+            <img src="swati.jpg" class="rounded-circle" width="30px" height="30px"style="margin-left: 8px;">
+            <a href="https://www.instagram.com/swati_singh_462/">swati_singh_462</a>
+            
+            
+
+            <button class="toggle"><i id ="mybtn" class="fas fa-ellipsis-h" style="margin-left: 40%;height: 10px;"></i></button>
+            <div id="link-box">
+                <ul>
+                   <li><a href="#" style="color: #ed4956;">Report</a></li>
+                   <li><a href="#"style="color:#ed4956;">Unfollow</a></li>
+                   <li><a href="#">Go to post</a></li>
+                   <li><a href="#">Share to</a></li>
+                   <li><a href="#">copy link</a></li>
+                   <li><a href="#">Embeded</a></li>
+                </ul>
+            </div>
+                <div class="post2">
+                <img src="download.jfif">
+            </div>
+        </div>
+           <span id="heart"><i  class="far fa-heart" aria-hidden="true" style="font-size:25px;"></i></span>
+               <i class="far fa-comment" style="font-size:25px;"></i>
+               <i class="fas fa-paper-plane" style="font-size:23px;"></i>
+               <p style="padding-left: 10px;font-size: 14px; cursor: pointer;"><strong>999 likes</strong><br>May 30</p>
+               
+               
+             <!--post2-->  
+               
+               <div class="para2">
+
+                <img src="p.png" class="rounded-circle" width="30px" height="30px"style="margin-left: 8px;">
+                <a href="https://www.instagram.com/me_piyush_raj_/" style="text-decoration: none;color: black; font-weight: bold;font-size: 13px;margin-left: 10px;">me_piyush_raj</a>
+                
+                
+    
+                <button class="toggle"><i id ="mybtn" class="fas fa-ellipsis-h" style="margin-left: 40%;height: 10px;"></i></button>
+                <div id="link-box2">
+                    <ul>
+                       <li><a href="#" style="color: #ed4956;">Report</a></li>
+                       <li><a href="#"style="color:#ed4956;">Unfollow</a></li>
+                       <li><a href="#">Go to post</a></li>
+                       <li><a href="#">Share to</a></li>
+                       <li><a href="#">copy link</a></li>
+                       <li><a href="#">Embeded</a></li>
+                    </ul>
+                </div>
+               <div class="post2">
+                   <img src="drop.jpg">
+               </div>
+        
+        <span id="heart2"><i class="far fa-heart" aria-hidden="true" style="font-size:25px;"></i></span>
+            <i class="far fa-comment" style="font-size:25px;"></i>
+            <i class="fas fa-paper-plane" style="font-size:23px;"></i>
+            <p style="padding-left: 10px;font-size: 14px; cursor: pointer;"><strong>10k likes</strong><br>May 29</p>
+        
+
+            <!--post3-->
+
+            <div class="para">
+                <img src="v.png" class="rounded-circle" width="30px" height="30px" style="margin-left: 8px;">
+                <a href="https://www.instagram.com/mevikas_thakur/"style="text-decoration: none;color: black; font-weight: bold;font-size: 13px;margin-left: 10px;">mevikas_thakur</a>
+                
+                
+    
+                <button class="toggle"><i id ="mybtn" class="fas fa-ellipsis-h" style="margin-left: 40%;height: 10px;"></i></button>
+                <div id="link-box3">
+                    <ul>
+                       <li><a href="#" style="color: #ed4956;">Report</a></li>
+                       <li><a href="#"style="color:#ed4956;">Unfollow</a></li>
+                       <li><a href="#">Go to post</a></li>
+                       <li><a href="#">Share to</a></li>
+                       <li><a href="#">copy link</a></li>
+                       <li><a href="#">Embeded</a></li>
+                    </ul>
+                </div>
+                    
+                <div class="post2">
+                    <img src="butter.jfif">
+                </div>
+            </div>
+    
+                <span id="heart3"><i class="far fa-heart" aria-hidden="true" style="font-size:25px;"></i></span>
+                   <i class="far fa-comment" style="font-size:25px;"></i>
+                   <i class="fas fa-paper-plane" style="font-size:23px;"></i>
+                   <p style="padding-left: 10px;font-size: 14px; cursor: pointer;"><strong>99k likes</strong><br>May 20</p>
+        
+        </div>
+    </div>
+    <hr>
+
+    <!--footer-->
+    <div class="footer">
+        <a href="" class="far fa-home-lg-alt" style="font-size:25px;color: black;text-decoration: none;"></a>
+        <a href="" class="fas fa-search" style="font-size:25px;color: black;text-decoration: none;"></a>
+        <a href="" class="far fa-plus-square" style="font-size:25px;color: black;text-decoration: none;" ></a>
+        <a href="" class="far fa-heart" style="font-size:25px;color: black;text-decoration: none;"></a>
+        <a href="" class="far fa-user-circle" style="font-size:25px;color: black;text-decoration: none;"></a>
+
+    </div>
+
+
+    </div>
+</div>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        var modal2= document.getElementById("myModal2");
+        var modal3= document.getElementById("myModal3");
+        var modal4= document.getElementById("myModal4");
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("myImg");
+        var img2 = document.getElementById("myImg2");
+        var img3 = document.getElementById("myImg3");
+        var img4 = document.getElementById("myImg4");
+        var modalImg = document.getElementById("img01");
+        var modalImg2 = document.getElementById("img02");
+        var modalImg3 = document.getElementById("img03");
+        var modalImg4 = document.getElementById("img04");
+        var captionText = document.getElementById("caption");
+        var captionText2 = document.getElementById("caption2");
+        var captionText3 = document.getElementById("caption3");
+        var captionText4 = document.getElementById("caption4");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+        img2.onclick = function(){
+          modal2.style.display = "block";
+          modalImg2.src = this.src;
+          captionText2.innerHTML = this.alt;
+        }
+        img3.onclick = function(){
+          modal3.style.display = "block";
+          modalImg3.src = this.src;
+          captionText3.innerHTML = this.alt;
+        }
+        img4.onclick = function(){
+          modal4.style.display = "block";
+          modalImg4.src = this.src;
+          captionText4.innerHTML = this.alt;
+        }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
+        var span3 = document.getElementsByClassName("close")[2];
+        var span4 = document.getElementsByClassName("close")[3];
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
+        span2.onclick = function() { 
+          modal2.style.display = "none";
+        }
+        span3.onclick = function() { 
+          modal3.style.display = "none";
+        }
+        span4.onclick = function() { 
+          modal4.style.display = "none";
+        }
+
+
+
+
+        $(document).ready(function(){
+        $("#heart").click(function(){
+        if($("#heart").hasClass("liked")){
+            $("#heart").html('<i class="far fa-heart" aria-hidden="true"></i>');
+            $("#heart").removeClass("liked");
+        }else{
+            $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+            $("#heart").addClass("liked");
+        }
+    });
+   });
+
+
+
+
+   $(document).ready(function(){
+        $("#heart2").click(function(){
+        if($("#heart2").hasClass("liked")){
+            $("#heart2").html('<i class="far fa-heart" aria-hidden="true"></i>');
+            $("#heart2").removeClass("liked");
+        }else{
+            $("#heart2").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+            $("#heart2").addClass("liked");
+        }
+    });
+   });
+
+
+   $(document).ready(function(){
+        $("#heart3").click(function(){
+        if($("#heart3").hasClass("liked")){
+            $("#heart3").html('<i class="far fa-heart" aria-hidden="true"></i>');
+            $("#heart").removeClass("liked");
+        }else{
+            $("#heart3").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+            $("#heart3").addClass("liked");
+        }
+    });
+   });
+
+       
+        </script>
+</body>
+</html>
